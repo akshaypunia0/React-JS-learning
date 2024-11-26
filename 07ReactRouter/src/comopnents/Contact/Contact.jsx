@@ -39,7 +39,7 @@ function Contact() {
                                     />
                                 </svg>
                                 <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                                    Acme Inc, Street, State, Postal Code
+                                    District Baghpat, Uttar Pradesh
                                 </div>
                             </div>
 
@@ -61,7 +61,7 @@ function Contact() {
                                     />
                                 </svg>
                                 <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                                    +44 1234567890
+                                    +91 9557-328-964
                                 </div>
                             </div>
 
@@ -83,7 +83,7 @@ function Contact() {
                                     />
                                 </svg>
                                 <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                                    info@acme.org
+                                    akshaypunia.info@gmail.com
                                 </div>
                             </div>
                         </div>
