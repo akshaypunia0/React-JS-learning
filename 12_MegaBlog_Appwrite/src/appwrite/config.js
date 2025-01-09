@@ -123,10 +123,11 @@ export class Service{
         }
     }
 
-    getFilePreview() {
+    getFilePreview(fileId) {
         try {
            return this.storage.getFilePreview(
-            
+            conf.appwriteBucketId,
+            fileId,
             )
         } catch (error) {
             console.log(error);
