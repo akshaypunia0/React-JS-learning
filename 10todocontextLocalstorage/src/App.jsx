@@ -9,54 +9,74 @@ function App() {
 
   const [todos, setTodos] = useState([])
 
-  const addTodo = (todo) => {
+  // const addTodo = (todo) => {
 
-    setTodos((prev) => {
-      return [{
-        id: Date.now(),
-        ...todo
-      }, ...prev]
-    })
+  //   setTodos((prev) => {
+  //     return [{
+  //       id: Date.now(),
+  //       ...todo
+  //     }, ...prev]
+  //   })
+  // }
+
+  const addTodo = (todo) => {
+    setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev])
   }
 
+
+
+
+  // const updateTodo = (id, todo) => {
+
+  //   setTodos((prev) => {
+  //     prev.map((eachTodo) => {
+  //       if (eachTodo.id === id) {
+  //         todo
+  //       }
+  //       else {
+  //         eachTodo
+  //       }
+  //     })
+  //   })
+  // }
 
   const updateTodo = (id, todo) => {
+    setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo)))
 
-    setTodos((prev) => {
-      prev.map((eachTodo) => {
-        if (eachTodo.id === id) {
-          todo
-        }
-        else {
-          eachTodo
-        }
-      })
-    })
   }
 
+
+
+
+  // const deleteTodo = (id) => {
+
+  //   setTodos((prev) => {
+  //     prev.filter((todo) => { todo.id !== id })
+  //   })
+  // }
 
   const deleteTodo = (id) => {
-
-    setTodos((prev) => {
-      prev.filter((todo) => { todo.id !== id })
-
-
-      // prev.map((eachTodo) => {
-      //   if (eachTodo.id === id) {
-      //     prev.splice(id, 1)
-      //   }
-      // } )
-    })
+    setTodos((prev) => prev.filter((todo) => todo.id !== id))
   }
+
+
+
 
   const toggleComplete = (id) => {
 
     console.log("Toggle 2 run");
-    
-    setTodos((prev) => prev.map((prevTodo) => {
-      prevTodo.id === id ? { ...prevTodo, completed: !prevTodo.completed } : prevTodo
-    }
-    ))
+
+    // setTodos((prev) => prev.map((prevTodo) => {
+    //   prevTodo.id === id ? { ...prevTodo, completed: !prevTodo.completed } : prevTodo
+    // }
+    // ))
+
+    setTodos((prev) =>
+      prev.map((prevTodo) =>
+        prevTodo.id === id ? {
+          ...prevTodo,
+          completed: !prevTodo.completed
+        } : prevTodo))
 
 
     // setTodos((prev) => {
@@ -68,6 +88,9 @@ function App() {
     // })
 
   }
+
+
+
 
   useEffect(() => {
     let todos = JSON.parse(localStorage.getItem("todos"))
@@ -89,7 +112,7 @@ function App() {
   return (
     <TodoProvider value={{ todos, addTodo, updateTodo, deleteTodo, toggleComplete }}>
       <div className="bg-[#172842] min-h-screen py-8">
-        <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
+        <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white bg-gray-700">
           <h1 className="text-2xl font-bold text-center mb-8 mt-2">Manage Your Todos</h1>
           <div className="mb-4">
             {/* Todo form goes here */}
@@ -99,7 +122,7 @@ function App() {
             {/*Loop and Add TodoItem here */}
             {todos.map((todo) => (
               <div key={todo.id}
-              className='w-full'
+                className='w-full'
               >
                 <TodoItem todo={todo} />
 

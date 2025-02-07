@@ -7,9 +7,7 @@ let name = ''
 
 function Github() {
 
-  const [username, setUsername] = useState('akshaypunia0')
-
-  name = username;
+  const [username, setUsername] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -60,7 +58,7 @@ export default Github
 
 export const getGithubData = async () => {
 
-  const response = await fetch(`https://api.github.com/users/${name}`);
+  const response = await fetch(`https://api.github.com/users/akshaypunia0`);
 
 
   return response.json();
